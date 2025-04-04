@@ -1,0 +1,8 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+**/environments/*.json
+infra/**/*.tfstate*
+/.nx/cache
+/.nx/workspace-data

@@ -1,0 +1,60 @@
+{
+  "name": "sample-web",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/sample/web/src",
+  "projectType": "application",
+  "tags": [],
+  "implicitDependencies": ["style"],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/sample/web",
+        "index": "apps/sample/web/src/index.html",
+        "baseHref": "/",
+        "main": "apps/sample/web/src/main.tsx",
+        "tsConfig": "apps/sample/web/tsconfig.app.json",
+        "assets": [
+          "apps/sample/web/src/favicon.ico",
+          "apps/sample/web/src/assets"
+        ],
+        "styles": ["apps/sample/web/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/sample/web/webpack.config.js",
+        "fileReplacements": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/style/src/scss"]
+        }
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "sample-web:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "sample-web:build:development"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "sample-web:build"
+      }
+    }
+  }
+}
