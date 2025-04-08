@@ -9,5 +9,5 @@ yarn start sample-web
 
 | Branch | Nx version | Working |
 | ------ | ---------- | ------- |
-| Main   | 20.4.6     | ✅      |
+| main   | 20.4.6     | ✅      |
 | 20-7-1 | 20.7.1     | ❌      |
